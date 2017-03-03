@@ -1,6 +1,7 @@
 const io = require('socket.io-client'),
   serverUrl = ('http://localhost:8080'),
   connection = io.connect(serverUrl),
+  socket = io(),
   $ = require('jquery');
 
 $(function() {
@@ -22,19 +23,32 @@ $(function() {
         $('.memories__list').fadeToggle();
       });
     });
+    socket.on('message', function(msg) {
+      console.log(`Neuer Eintrag: ${msg}`)
+      alert(`Neuer Eintrag: ${msg.title}`)
+    });
+  }
+  if (window.location.pathname === '/sender') {
+
+    $('#rememberBtn').click(function(e) {
+      var text = $('#text').val();
+      var title = $('#title').val();
+      $.ajax({
+        url: '/sender',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ title: title, text: text }),
+        success: success
+      });
+      socket.emit('message', {
+        title: title,
+        text: text
+      });
+    });
+
   }
 
-  $('#rememberBtn').click(function(e) {
-    var text = $('#text').val();
-    var title = $('#title').val();
-    $.ajax({
-      url: '/sender',
-      type: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify({ title: title, text: text }),
-      success: success
-    });
-  });
+
 
 });
 
