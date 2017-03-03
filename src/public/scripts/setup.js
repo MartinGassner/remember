@@ -10,7 +10,9 @@ $(function () {
     $.get('/memories').then(data => {
       data.forEach(memory => {
         let cssClss = 'text';
-        if (memory.img) {cssClss = 'image'}
+        if (memory.img) {
+          cssClss = 'image'
+        }
         let newHtml = `<div class="memory__single ${cssClss}"><div class="text__wrapper"><p>${memory.title}</p> <p>${memory.text}</p></div>`;
         if (memory.img) {
           newHtml += `<img src="${memory.img}" alt="">`;
@@ -64,14 +66,14 @@ $(function () {
 
   }
   // slidehsow options
-  setInterval(function() {
+  setInterval(function () {
     $('#slideshow > div:first')
       .fadeOut(1000)
       .next()
       .fadeIn(1000)
       .end()
       .appendTo('#slideshow');
-  },  5000);
+  }, 5000);
 
 
 });
@@ -94,18 +96,22 @@ function getBase64(title, text, file, category, sender_id, consumer_id) {
 
 function saveMemory(title, text, img, category, sender_id, consumer_id) {
 
+  let data = {
+    title: title,
+    text: text,
+    category: category,
+    sender_id: sender_id,
+    consumer_id: consumer_id
+  };
+  if (img) {
+    data.img = img;
+  }
+
   $.ajax({
     url: '/sender',
     type: 'POST',
     contentType: 'application/json',
-    data: JSON.stringify({
-      title: title,
-      text: text,
-      img: img,
-      category: category,
-      sender_id: sender_id,
-      consumer_id: consumer_id
-    }),
+    data: JSON.stringify(data),
     success: success
   });
 
