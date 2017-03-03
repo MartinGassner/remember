@@ -3,8 +3,6 @@ const io = require('socket.io-client'),
   connection = io.connect(serverUrl),
   $ = require('jquery');
 
-
-
 $(function() {
 
   if (window.location.pathname === '/consumer') {
@@ -15,8 +13,11 @@ $(function() {
       $('#getRandomMemory').click(function() {
         const randi = Math.floor(Math.random() * data.length);
         $('.memory__random').html(`<p> ${data[randi].title} </p>`);
+        if(responsiveVoice.voiceSupport()) {
+          responsiveVoice.speak(`${data[randi].title}`, "Deutsch Female", {rate: 0.75});
+          responsiveVoice.speak(`${data[randi].text}`, "Deutsch Female", {rate: 0.75});
+        }
       });
-
       $('#allMemories').click(function() {
         $('.memories__list').fadeToggle();
       });
