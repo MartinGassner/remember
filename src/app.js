@@ -26,8 +26,7 @@ app.get('/', function (req, res) {
   // so wird die Datei index.html ausgegeben
   res.sendFile(__dirname + '/views/index.html');
 });
-
-app.get('/consumer', function (req, res) {
+app.get('/memories', function (req, res) {
 
   connection.connect(function (err) {
     if (err) {
@@ -37,8 +36,15 @@ app.get('/consumer', function (req, res) {
     console.log('Connection established');
   });
 
-  connection.end();
+  connection.query('SELECT * FROM memories', function (error, results, fields) {
+    if (error) throw error;
+    res.send(results);
+  });
 
+  connection.end();
+});
+
+app.get('/consumer', function (req, res) {
   // so wird die Datei index.html ausgegeben
   res.sendFile(__dirname + '/views/consumer.html');
 });
