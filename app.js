@@ -2,7 +2,7 @@ const express = require('express'),
   bodyparser = require('body-parser'),
   app = express()
     .use(express.static('dist/public'))
-    .use(bodyparser.json({limit: '500000'})),
+    .use(bodyparser.json({limit: '5000000'})),
   server = require('http').createServer(app),
   io = require('socket.io')(server),
   conf = require('./config.json'),
