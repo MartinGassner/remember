@@ -1,7 +1,18 @@
-console.log('in file');
-const $ = require('jquery');
+$(function () {
+  $('#rememberBtn').click(function (e) {
 
-$('#rememberBtn').click(function(e){
-console.log('in function');
-  $.post('/sender');
+    var text = $('#text').val();
+    var title = $('#title').val();
+    $.ajax({
+      url: '/sender',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({title: title, text: text}),
+      success: success
+    });
+  });
 });
+
+function success(){
+  $('.messages').text('erfolgreich hinzugefügt');
+}

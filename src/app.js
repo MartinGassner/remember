@@ -1,5 +1,8 @@
 const express = require('express'),
-  app = express().use(express.static('public')),
+  bodyparser = require('body-parser'),
+  app = express()
+    .use(express.static('public'))
+    .use(bodyparser.json()),
   server = require('http').createServer(app),
   io = require('socket.io').listen(server),
   conf = require('./config.json'),
@@ -25,12 +28,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/consumer', function (req, res) {
-  // so wird die Datei index.html ausgegeben
-  res.sendFile(__dirname + '/views/consumer.html');
-});
 
-app.post('/sender', function (req, res) {
-  console.log('creating memorie');
   connection.connect(function (err) {
     if (err) {
       console.log('Error connecting to Db');
@@ -39,13 +37,28 @@ app.post('/sender', function (req, res) {
     console.log('Connection established');
   });
 
-  connection.query('INSERT INTO memories (title, text, sender_id, consumer_id) VALUES (?, ?, ?, ?)', req.title, req.text, req.sender_id, req.consumer_id, function (error) {
+  connection.end();
+
+  // so wird die Datei index.html ausgegeben
+  res.sendFile(__dirname + '/views/consumer.html');
+});
+
+app.post('/sender', function (req, res) {
+  connection.connect(function (err) {
+    if (err) {
+      console.log('Error connecting to Db');
+      return;
+    }
+    console.log('Connection established');
+  });
+
+  const post = {title: String(req.body.title), text: String(req.body.text), consumer_id: 1, sender_id: 2 };
+  connection.query('INSERT INTO memories SET ? ;', post, function (error) {
     if (error) throw error;
-    console.log('Last insert ID:', res.title);
   });
 
   connection.end();
-  res.send(200);
+  res.sendStatus(200);
 });
 
 app.get('/sender', function (req, res) {
