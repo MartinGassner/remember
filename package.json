@@ -4,7 +4,8 @@
   "description": "## Prerequisites You will need the following things properly installed on your computer.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "grunt",
+    "start": "grunt start"
   },
   "repository": {
     "type": "git",
@@ -17,10 +18,25 @@
   },
   "homepage": "https://github.com/MartinGassner/remember#readme",
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
     "express": "^4.15.0",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^4.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1",
     "jquery": "^3.1.1",
+    "load-grunt-tasks": "^3.3.0",
     "mysql": "^2.13.0",
     "path": "^0.12.7",
-    "socket.io": "^1.7.3"
+    "socket.io": "^1.7.3",
+    "time-grunt": "^1.2.1",
+    "uglifyify": "^3.0.4",
+    "hbsfy": "^2.7.0",
+    "handlebars": "^4.0.3"
   }
 }
