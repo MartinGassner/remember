@@ -18,7 +18,13 @@ const express = require('express'),
 server.listen(conf.port);
 
 
-
+connection.connect(function (err) {
+  if (err) {
+    console.log('Error connecting to Db');
+    return;
+  }
+  console.log('Connection established');
+});
 
 
 
@@ -28,20 +34,11 @@ app.get('/', function (req, res) {
 });
 app.get('/memories', function (req, res) {
 
-  connection.connect(function (err) {
-    if (err) {
-      console.log('Error connecting to Db');
-      return;
-    }
-    console.log('Connection established');
-  });
-
   connection.query('SELECT * FROM memories', function (error, results, fields) {
     if (error) throw error;
     res.send(results);
   });
 
-  connection.end();
 });
 
 app.get('/consumer', function (req, res) {
@@ -50,20 +47,13 @@ app.get('/consumer', function (req, res) {
 });
 
 app.post('/sender', function (req, res) {
-  connection.connect(function (err) {
-    if (err) {
-      console.log('Error connecting to Db');
-      return;
-    }
-    console.log('Connection established');
-  });
+
 
   const post = {title: String(req.body.title), text: String(req.body.text), consumer_id: 1, sender_id: 2 };
   connection.query('INSERT INTO memories SET ? ;', post, function (error) {
     if (error) throw error;
   });
 
-  connection.end();
   res.sendStatus(200);
 });
 
