@@ -68,15 +68,18 @@ app.post('/sender', function (req, res) {
   if (req.body.img) {
     image = req.body.img;
   }
-
-  const post = {
+  const data = {
     title: String(req.body.title),
     text: String(req.body.text),
+    category: String(req.body.category),
     consumer_id: 1,
-    sender_id: 2,
-    img: String(image)
+    sender_id: 2
   };
-  connection.query('INSERT INTO memories SET ? ;', post, function (error) {
+  if (image) {
+    data.img = String(image);
+  }
+
+  connection.query('INSERT INTO memories SET ? ;', data, function (error) {
     if (error) throw error;
   });
   res.sendStatus(200);
