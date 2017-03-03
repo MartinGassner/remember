@@ -8,13 +8,23 @@
 <h2>This is the Sender!</h2>
 <div class="messages"></div>
 <div class="form">
-  <input type="text" name="title" id="title" placeholder="Ein Titel">
-  <input type="text" name="text" id="text" placeholder="Beschreibung">
-  <input type="file" name="fileupload" id="fileupload">
-  <input id="rememberBtn" type="submit" value="Merken">
+
+
+    <input type="text" name="title" id="title" placeholder="Ein Titel">
+    <input type="text" name="text" id="text" placeholder="Beschreibung">
+
+    <input type="radio" name="category" value="family" checked> Family<br>
+    <input type="radio" name="category" value="friends"> Freunde<br>
+    <input type="radio" name="category" value="childhood"> Kindheit
+    <input type="radio" name="category" value="adults"> Erwachsene
+    <input type="radio" name="category" value="elderly"> Senioren
+
+    <input type="file" name="fileupload" id="fileupload">
+    <input id="rememberBtn" type="submit" value="Merken">
+
 </div>
 
-  <script type="text/javascript" src="scripts/script.js"></script>
+<script type="text/javascript" src="scripts/script.js"></script>
 
 </body>
 </html>

@@ -41,20 +41,25 @@ $(function () {
   }
   if (window.location.pathname === '/sender') {
 
-    $('#rememberBtn').click(function (e) {
-      const text = $('#text').val(),
-        title = $('#title').val();
-      $.ajax({
-        url: '/sender',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({title: title, text: text}),
-        success: success
-      });
+    $('#rememberBtn').click(function () {
+      const file = $('#fileupload')[0].files[0],
+        text = $('#text').val(),
+        title = $('#title').val(),
+        category = $('input[name=category]:checked').val();
+      console.log(category);
+
+      if (file && /\.(jpe?g|png|gif)$/i.test(file.name)) {
+        getBase64(title, text, file, category, 1, 2);
+      } else {
+        console.log('wrong file type or empty file');
+        saveMemory(title, text, null, category, 1, 2);
+      }
       socket.emit('message', {
         title: title,
         text: text
       });
+
+
     });
 
   }
@@ -74,4 +79,34 @@ $(function () {
 
 function success() {
   $('.messages').text('erfolgreich hinzugefügt');
+}
+
+function getBase64(title, text, file, category, sender_id, consumer_id) {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function () {
+    saveMemory(title, text, reader.result, category, sender_id, consumer_id);
+  };
+  reader.onerror = function (error) {
+    console.log('Error: ', error);
+  };
+}
+
+function saveMemory(title, text, img, category, sender_id, consumer_id) {
+
+  $.ajax({
+    url: '/sender',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      title: title,
+      text: text,
+      img: img,
+      category: category,
+      sender_id: sender_id,
+      consumer_id: consumer_id
+    }),
+    success: success
+  });
+
 }

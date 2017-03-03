@@ -72,6 +72,7 @@ app.post('/sender', function (req, res) {
   const post = {
     title: String(req.body.title),
     text: String(req.body.text),
+    category: String(req.body.category),
     consumer_id: 1,
     sender_id: 2,
     img: String(image)
