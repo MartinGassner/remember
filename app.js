@@ -2,7 +2,7 @@ const express = require('express'),
   bodyparser = require('body-parser'),
   app = express()
     .use(express.static('dist/public'))
-    .use(bodyparser.json({limit: '5000000'})),
+    .use(bodyparser.json({limit: '50000000'})),
   server = require('http').createServer(app),
   io = require('socket.io')(server),
   conf = require('./config.json'),
@@ -68,18 +68,15 @@ app.post('/sender', function (req, res) {
   if (req.body.img) {
     image = req.body.img;
   }
-  const data = {
+
+  const post = {
     title: String(req.body.title),
     text: String(req.body.text),
-    category: String(req.body.category),
     consumer_id: 1,
-    sender_id: 2
+    sender_id: 2,
+    img: String(image)
   };
-  if (image) {
-    data.img = String(image);
-  }
-
-  connection.query('INSERT INTO memories SET ? ;', data, function (error) {
+  connection.query('INSERT INTO memories SET ? ;', post, function (error) {
     if (error) throw error;
   });
   res.sendStatus(200);

@@ -70,12 +70,16 @@ $(function () {
   function screenReading(_this) {
     if (responsiveVoice.voiceSupport() && screenReaderOn) {
       responsiveVoice.speak(_this.find($('.text__wrapper p:first-child')).text(), "Deutsch Female", {rate: 0.75});
-      // responsiveVoice.speak(_this.find($('.text__wrapper p:nth-child(2)')).text(), "Deutsch Female", {rate: 0.75});
+      responsiveVoice.speak(_this.find($('.text__wrapper p:nth-child(2)')).text(), "Deutsch Female", {rate: 0.75});
     }
   }
 
   // slidehsow options
+  let duration = 5000;
   setInterval(function () {
+    const _this = $(this),
+      char = $('#slideshow > div:first > .text__wrapper p:first-child').text().length + $('#slideshow > div:first > .text__wrapper p:nth-child(2)').text().length;
+      duration = Math.floor(char/30) * 1000 + 2500;
     $('#slideshow > div:first')
       .fadeOut(1000)
       .next()
@@ -85,7 +89,7 @@ $(function () {
       })
       .end()
       .appendTo('#slideshow');
-  }, 5000);
+  }, duration);
 
 
 });
