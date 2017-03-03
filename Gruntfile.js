@@ -25,7 +25,7 @@ module.exports = function(grunt) {
           './dist/public/scripts/script.js': ['./src/public/scripts/*.js'],
         },
         options: {
-          transform: ['hbsfy', 'babelify', 'uglifyify']
+          transform: ['hbsfy', 'babelify']
         }
       }
     },
