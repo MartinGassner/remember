@@ -1,3 +1,7 @@
 .memories__list {
   display: none;
 }
+
+input {
+  display: block;
+}
