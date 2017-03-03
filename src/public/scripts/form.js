@@ -1,3 +1,5 @@
+const $ = require('jquery');
+
 $(function () {
   $('#rememberBtn').click(function () {
     let fileString = null;
@@ -6,7 +8,6 @@ $(function () {
       title = $('#title').val();
 
     if (file && /\.(jpe?g|png|gif)$/i.test(file.name)) {
-      console.log(file);
       getBase64(title, text, file, 1, 2);
     } else {
       console.log('wrong file type or empty file');
@@ -16,7 +17,7 @@ $(function () {
   });
 });
 
-function success(){
+function success() {
   $('.messages').text('erfolgreich hinzugefügt');
 }
 
