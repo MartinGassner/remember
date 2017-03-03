@@ -9,7 +9,9 @@ $(function () {
   if (window.location.pathname === '/consumer') {
     $.get('/memories').then(data => {
       data.forEach(memory => {
-        let newHtml = `<div class="memory__single"></div><p>${memory.title}</p> <p>${memory.text}</p>`;
+        let cssClss = 'text';
+        if (memory.img) {cssClss = 'image'}
+        let newHtml = `<div class="memory__single ${cssClss}"><div class="text__wrapper"><p>${memory.title}</p> <p>${memory.text}</p></div>`;
         if (memory.img) {
           newHtml += `<img src="${memory.img}" alt="">`;
         }
@@ -19,7 +21,7 @@ $(function () {
       });
       $('#getRandomMemory').click(function () {
         const randi = Math.floor(Math.random() * data.length);
-        let newHtml = `<div class="memory__single"></div><p>${data[randi].title}</p> <p>${data[randi].text}</p>`;
+        let newHtml = `<div class="memory__single"><p>${data[randi].title}</p> <p>${data[randi].text}</p>`;
         if (data[randi].img) {
           newHtml += `<img src="${data[randi].img}" alt="">`;
         }
@@ -30,9 +32,6 @@ $(function () {
           responsiveVoice.speak(`${data[randi].title}`, "Deutsch Female", {rate: 0.75});
           responsiveVoice.speak(`${data[randi].text}`, "Deutsch Female", {rate: 0.75});
         }
-      });
-      $('#allMemories').click(function () {
-        $('.memories__list').fadeToggle();
       });
     });
     socket.on('message', function (msg) {
@@ -59,6 +58,15 @@ $(function () {
     });
 
   }
+  // slidehsow options
+  setInterval(function() {
+    $('#slideshow > div:first')
+      .fadeOut(1000)
+      .next()
+      .fadeIn(1000)
+      .end()
+      .appendTo('#slideshow');
+  },  5000);
 
 
 });
