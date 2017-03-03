@@ -1,7 +1,7 @@
 const express = require('express'),
   bodyparser = require('body-parser'),
   app = express()
-    .use(express.static('public'))
+    .use(express.static('dist/public'))
     .use(bodyparser.json()),
   server = require('http').createServer(app),
   io = require('socket.io').listen(server),
@@ -24,7 +24,7 @@ server.listen(conf.port);
 
 app.get('/', function (req, res) {
   // so wird die Datei index.html ausgegeben
-  res.sendFile(__dirname + '/views/index.html');
+  res.sendFile(__dirname + '/dist/views/index.html');
 });
 app.get('/memories', function (req, res) {
 
@@ -46,7 +46,7 @@ app.get('/memories', function (req, res) {
 
 app.get('/consumer', function (req, res) {
   // so wird die Datei index.html ausgegeben
-  res.sendFile(__dirname + '/views/consumer.html');
+  res.sendFile(__dirname + '/dist/views/consumer.html');
 });
 
 app.post('/sender', function (req, res) {
@@ -69,7 +69,7 @@ app.post('/sender', function (req, res) {
 
 app.get('/sender', function (req, res) {
   // so wird die Datei index.html ausgegeben
-  res.sendFile(__dirname + '/views/sender.html');
+  res.sendFile(__dirname + '/dist/views/sender.html');
 });
 
 app.get('/memories', function (req, res, next) {
