@@ -4,7 +4,7 @@ const express = require('express'),
     .use(express.static('dist/public'))
     .use(bodyparser.json()),
   server = require('http').createServer(app),
-  io = require('socket.io').listen(server),
+  io = require('socket.io')(server),
   conf = require('./config.json'),
   mysql = require('mysql'),
   connection = mysql.createConnection({
@@ -14,6 +14,10 @@ const express = require('express'),
     database: 'remember'
   });
 
+
+io.on('connection', function(socket) {
+    console.log('new connection');
+});
 
 server.listen(conf.port);
 
@@ -70,9 +74,6 @@ app.get('/sender', function (req, res) {
 
 
 
-app.get('/memories', function (req, res, next) {
-  res.send('Hello World')
-});
 
 
 console.log(`server is running at port ${conf.port}`);

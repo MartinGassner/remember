@@ -37,6 +37,7 @@
     "mysql": "^2.13.0",
     "path": "^0.12.7",
     "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3",
     "time-grunt": "^1.2.1",
     "uglifyify": "^3.0.4"
   }
