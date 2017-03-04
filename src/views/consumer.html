@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>reMEmber</title>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">reMEmber</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/sender">Erinnerung speichern</a></li>
+        <li class="active"><a href="/consumer">Erinnerung ansehen</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <!-- <h2>This is the Consumer</h2> -->
+  <!-- <button id="getRandomMemory">Erleuchtung</button> -->
+  <div class="filter">
+    <hr>
+    <p>Filter</p>
+    <div data-filter="family" class="filter__item filter__family">Familie</div>
+    <div data-filter="friends" class="filter__item filter__friends">Freunde</div>
+    <div data-filter="childhood" class="filter__item filter__childhood">Kindheit</div>
+    <div data-filter="adults" class="filter__item filter__adults">Erwachsene</div>
+    <div data-filter="elderly" class="filter__item filter__elderly">Senioren</div>
+    <hr>
+
+  </div>
+
+  <div class="memory__random">
+  </div>
+  <div class="memories__wrapper">
+    <button id="toggleScreenReader"><span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span></button>
+    <div class="memories__list" id="slideshow"></div>
+  </div>
+  <div class="memories__hidden" hidden></div>
+</div>
+<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+<script type="text/javascript" src="scripts/script.js"></script>
+</body>
+
+</html>

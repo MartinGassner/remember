@@ -1,0 +1,24 @@
+#toggleScreenReader {
+  border-radius: 50%;
+  box-shadow: none;
+  border: none;
+  background-color: $color-outrageous-orange;
+  color: $color-tuatara-dark;
+  width: 5.5em;
+  height: 5.5em;
+  margin-left: 2em;
+  bottom: -3.5em;
+  position: relative;
+  z-index: 1;
+  transition: all 0.25s ease-in-out;
+
+  span {
+    font-size: 3em;
+  }
+
+  &.active {
+    background-color: $color-persian-green;
+    transition: all 0.25s ease-in-out;
+  }
+}
+
