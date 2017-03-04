@@ -105,15 +105,20 @@ body {
     font-size: 1.5em; }
 
 .filter__item {
+  color: #00A388;
+  font-size: 1.5em;
   cursor: pointer;
   display: inline-block;
   margin-right: 1em;
   font-weight: bold; }
-
-.filter__item:hover,
-.filter__item.disabled {
-  font-weight: normal;
-  text-decoration: line-through; }
+  .filter__item i {
+    font-size: 2em;
+    display: block;
+    text-align: center; }
+  .filter__item:hover, .filter__item.disabled {
+    color: #FF6138;
+    text-decoration: line-through;
+    opacity: 0.3; }
 
 #toggleScreenReader {
   border-radius: 50%;
