@@ -270,10 +270,9 @@ input#title {
     height: 100%;
     top: 0;
     left: 0; }
-  .filter__item input[type="radio"] + div.circle + i {
-    margin-top: -0.3em; }
-  .filter__item .form .filter__item input {
-    display: none; }
+
+.form .filter__item input {
+  display: none; }
 
 .landing {
   position: relative;

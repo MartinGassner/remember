@@ -72,12 +72,10 @@
     left: 0;
   }
 
-  input[type="radio"] + div.circle + i {
-    margin-top: -0.3em;
-  }
+ 
 
-  .form .filter__item input {
-    display: none;
-  }
+}
+.form .filter__item input {
+  display: none;
 }
 
