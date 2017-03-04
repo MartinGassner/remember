@@ -108,20 +108,48 @@ body {
     font-size: 1.5em; }
 
 .filter__item {
-  color: #00A388;
-  font-size: 1.5em;
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  background-color: rgba(50, 50, 47, 0.2);
+  color: #fff;
+  font-size: 1em;
   cursor: pointer;
   display: inline-block;
   margin-right: 1em;
-  font-weight: bold; }
+  font-weight: bold;
+  position: relative; }
   .filter__item i {
     font-size: 2em;
     display: block;
-    text-align: center; }
-  .filter__item:hover, .filter__item.disabled {
-    color: #FF6138;
-    text-decoration: line-through;
-    opacity: 0.3; }
+    text-align: center;
+    position: relative;
+    z-index: 1; }
+  .filter__item span {
+    position: relative;
+    display: block;
+    text-align: center;
+    z-index: 1; }
+  .filter__item div.circle {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: 0.3s all ease-in-out;
+    text-align: center;
+    background: #00A388;
+    color: #fff;
+    border-radius: 100%;
+    overflow: hidden;
+    z-index: 0;
+    font-family: sans-serif;
+    /* Just 'cos */ }
+  .filter__item:hover div.circle, .filter__item.disabled div.circle {
+    width: 0;
+    height: 0;
+    top: calc(50% );
+    left: calc(50% ); }
 
 #toggleScreenReader {
   border-radius: 50%;
