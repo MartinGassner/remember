@@ -24,7 +24,7 @@ You will need the following things properly installed on your computer.
 CREATE TABLE `memories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `text` text,
-  `img` binary(1) DEFAULT NULL,
+  `img`longtext,
   `sender_id` int(11) unsigned NOT NULL,
   `consumer_id` int(11) unsigned NOT NULL,
   `title` varchar(255) NOT NULL DEFAULT '',
