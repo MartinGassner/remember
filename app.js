@@ -23,7 +23,9 @@ io.on('connection', function (socket) {
     consumer = socket;
   }
   socket.on('message', function(msg) {
-    consumer.emit('message', msg);
+    if(consumer) {
+      consumer.emit('message', msg);
+    }
   });
 
 });
@@ -62,18 +64,17 @@ app.get('/consumer', function (req, res) {
 
 
 app.post('/sender', function (req, res) {
-  let image = null;
-  if (req.body.img) {
-    image = req.body.img;
-  }
 
   const post = {
     title: String(req.body.title),
     text: String(req.body.text),
+    category: String(req.body.category),
     consumer_id: 1,
-    sender_id: 2,
-    img: String(image)
+    sender_id: 2
   };
+  if(req.body.img) {
+    post.img= String(req.body.img);
+  }
   connection.query('INSERT INTO memories SET ? ;', post, function (error) {
     if (error) throw error;
   });
