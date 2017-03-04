@@ -42,6 +42,13 @@ $(function () {
       toggleFilter(filterName);
       $(el.target).parent().toggleClass('disabled');
     });
+
+
+    $('.filter__item').each(function (i, e) {
+      setTimeout(function () {
+        $(e).removeClass('disabled');
+      }, (250 * (i+1)));
+    })
   }
   if (window.location.pathname === '/sender') {
     $('#fileupload').change(function() {

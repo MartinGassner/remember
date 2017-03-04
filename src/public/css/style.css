@@ -1,6 +1,6 @@
 /*
 Flaticon icon font: Flaticon
-Creation date: 04/03/2017 11:53
+Creation date: 04/03/2017 13:57
 */
 @font-face {
   font-family: "Flaticon";
@@ -26,26 +26,32 @@ Creation date: 04/03/2017 11:53
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased; }
 
-.flaticon-007-map-marker-with-two-arrows-pointing-opposite-directions:before {
+.flaticon-009-people:before {
   content: "\f100"; }
 
-.flaticon-001-pregnancy:before {
+.flaticon-008-photo-camera:before {
   content: "\f101"; }
 
-.flaticon-002-men-shaking-hands:before {
+.flaticon-007-map-marker-with-two-arrows-pointing-opposite-directions:before {
   content: "\f102"; }
 
-.flaticon-003-family-1:before {
+.flaticon-001-pregnancy:before {
   content: "\f103"; }
 
-.flaticon-004-family:before {
+.flaticon-002-men-shaking-hands:before {
   content: "\f104"; }
 
-.flaticon-005-old-couple:before {
+.flaticon-003-family-1:before {
   content: "\f105"; }
 
-.flaticon-006-crawling-baby-silhouette:before {
+.flaticon-004-family:before {
   content: "\f106"; }
+
+.flaticon-005-old-couple:before {
+  content: "\f107"; }
+
+.flaticon-006-crawling-baby-silhouette:before {
+  content: "\f108"; }
 
 body {
   background-color: #fff;
@@ -106,22 +112,6 @@ body {
     position: relative;
     z-index: 2;
     font-size: 1.5em; }
-
-.filter__item {
-  color: #00A388;
-  font-size: 1.5em;
-  cursor: pointer;
-  display: inline-block;
-  margin-right: 1em;
-  font-weight: bold; }
-  .filter__item i {
-    font-size: 2em;
-    display: block;
-    text-align: center; }
-  .filter__item:hover, .filter__item.disabled {
-    color: #FF6138;
-    text-decoration: line-through;
-    opacity: 0.3; }
 
 #toggleScreenReader {
   border-radius: 50%;
@@ -215,6 +205,66 @@ input#title {
   position: absolute;
   right: 0;
   top: 0; }
+
+.filter__item {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  background-color: rgba(50, 50, 47, 0.2);
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 1em;
+  font-weight: bold;
+  position: relative; }
+  .filter__item i {
+    font-size: 2em;
+    display: block;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-top: 0.2em; }
+  .filter__item span {
+    position: relative;
+    display: block;
+    text-align: center;
+    z-index: 1; }
+  .filter__item div.circle {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: 0.3s all ease-in-out;
+    text-align: center;
+    background: #00A388;
+    color: #fff;
+    border-radius: 100%;
+    overflow: hidden;
+    z-index: 0;
+    font-family: sans-serif;
+    /* Just 'cos */ }
+  .filter__item.disabled div.circle {
+    width: 0;
+    height: 0;
+    top: calc(50%);
+    left: calc(50%); }
+  .filter__item:hover div.circle {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #79BD8F; }
+  .filter__item input[type="radio"]:checked + div.circle {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; }
+  .filter__item input[type="radio"] + div.circle + i {
+    margin-top: -0.3em; }
+  .filter__item .form .filter__item input {
+    display: none; }
 
 .landing {
   position: relative;
