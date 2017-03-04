@@ -72,6 +72,18 @@ body {
   font-size: 1.5em;
 }
 
+.filter__item {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 1em;
+  font-weight: bold;
+}
+.filter__item:hover,
+.filter__item.disabled{
+  font-weight: normal;
+  text-decoration: line-through;
+}
+
 input {
   display: block;
 }

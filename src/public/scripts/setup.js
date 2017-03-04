@@ -13,7 +13,7 @@ $(function () {
         if (memory.img) {
           cssClss = 'image'
         }
-        let newHtml = `<div class="memory__single ${cssClss}"><div class="text__wrapper"><p>${memory.title}</p> <p>${memory.text}</p></div>`;
+        let newHtml = `<div class="memory__single ${cssClss} visible"><div class="text__wrapper"><p>${memory.title}</p><p>${memory.text}</p><p class="filter-name" hidden>${memory.category}</p></div>`;
         if (memory.img) {
           newHtml += `<img src="${memory.img}" alt="">`;
         }
@@ -23,7 +23,7 @@ $(function () {
       });
       $('#getRandomMemory').click(function () {
         const randi = Math.floor(Math.random() * data.length);
-        let newHtml = `<div class="memory__single"><p>${data[randi].title}</p> <p>${data[randi].text}</p>`;
+        let newHtml = `<div class="memory__single"><p>${data[randi].title}</p> <p>${data[randi].text}</p><p class="filter-name" hidden>${data[randi].category}</p>`;
         if (data[randi].img) {
           newHtml += `<img src="${data[randi].img}" alt="">`;
         }
@@ -37,8 +37,14 @@ $(function () {
       });
     });
     socket.on('message', function (msg) {
-      console.log(`Neuer Eintrag: ${msg}`)
-      alert(`Neuer Eintrag: ${msg.title}`)
+      console.log(`Neuer Eintrag: ${msg}`);
+      alert(`Neuer Eintrag: ${msg.title}`);
+    });
+
+    $('.filter__item').click(function (el) {
+      const filterName = el.target.dataset.filter;
+      toggleFilter(filterName);
+      $(el.target).toggleClass('disabled');
     });
   }
   if (window.location.pathname === '/sender') {
@@ -67,12 +73,17 @@ $(function () {
   }
   // slidehsow options
   setInterval(function () {
-    $('#slideshow > div:first')
-      .fadeOut(1000)
-      .next()
-      .fadeIn(1000)
-      .end()
-      .appendTo('#slideshow');
+    if($('#slideshow > div.visible').length > 1) {
+      $('#slideshow > div.visible').first()
+        .fadeOut(1000)
+        .next()
+        .fadeIn(1000)
+        .end()
+        .appendTo('#slideshow');
+
+    } else {
+      $('#slideshow > div.visible').first().show();
+    };
   }, 5000);
 
 
@@ -114,5 +125,20 @@ function saveMemory(title, text, img, category, sender_id, consumer_id) {
     data: JSON.stringify(data),
     success: success
   });
+
+}
+
+function toggleFilter(filterName) {
+  $('p.filter-name').each(function (index, element) {
+  console.log(element.innerText);
+    if(element.innerText == filterName) {
+      const parent = $(element).parent().parent();
+      if(parent.attr('class').includes('visible')) {
+        parent.removeClass('visible').fadeOut().appendTo($('.memories__hidden'));
+      } else {
+        parent.addClass('visible').appendTo($('#slideshow'));
+      }
+    }
+  })
 
 }
