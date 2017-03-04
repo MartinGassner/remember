@@ -31,11 +31,15 @@
   </div>
 </nav>
 <div class="container-fluid">
-  <h2>This is the Sender!</h2>
   <div class="messages"></div>
   <div class="form">
-    <input type="text" name="title" id="title" placeholder="Ein Titel">
-    <input type="text" name="text" id="text" placeholder="Beschreibung">
+    <label class="fi flaticon-001-pregnancy fileContainer ">
+      Neue Erinnerung
+      <input type="file" name="fileupload" id="fileupload">
+    </label>
+    <input type="text" name="title" id="title" placeholder="Titel">
+    
+    <textarea id="text" placeholder="Was habt ihr gemacht?"></textarea>
     <br>
     <input type="radio" name="category"  value="family" checked><i class="fi flaticon-003-family-1"></i><span>Familie</span><br>
     <input type="radio" name="category"  value="friends"><i class="fi flaticon-002-men-shaking-hands"></i><span>Freunde</span><br>
@@ -44,7 +48,6 @@
     <input type="radio" name="category"  value="elderly"><i class="fi flaticon-005-old-couple"></i><span>Senioren</span>
     <input type="radio" name="category"  value="places"><i class="fi flaticon-007-map-marker-with-two-arrows-pointing-opposite-directions"></i><span>Orte</span>
 
-    <input type="file" name="fileupload" id="fileupload">
     <input id="rememberBtn" type="submit" value="Merken">
 
   </div>
