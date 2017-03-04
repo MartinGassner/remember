@@ -8,124 +8,66 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 
+  & > div.text {
+    background-color: $color-plain-white;
+    padding: 5%;
+  }
 
-& > div.text {
-  background-color: $color-plain-white;
-  padding: 5%;
-}
+  & > div.text p:first-of-type {
+    font-size: 3em;
+    text-align: center;
+  }
 
-& > div.text p:first-of-type {
-  font-size: 3em;
-  text-align: center;
-}
+  & > div.image p {
+    color: white;
+    padding: 0 3%;
+    margin: 0.5em 0;
+  }
 
-& > div.image p {
-  color: white;
-  padding: 0 3%;
-  margin: 0.5em 0;
-}
-
-& > div.image p:first-of-type {
-  font-size: 2em;
-}
-
-& > div.image .text__wrapper {
-  position: absolute;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  z-index: 3;
-}
-
-& > div.text p:last-of-type {
-  padding: 2% 10%;
-}
-
-& > div:first-of-type {
-  display: block;
-}
-
-& > div {
-  display: none;
-  position: absolute;
-  overflow: hidden;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-}
-
-& > div > img {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-& > div > p {
-  padding: 2% 5%;
-  position: relative;
-  z-index: 2;
-  font-size: 1.5em;
-}
-
-}
-.filter__item {
-  width: 6em;
-  height: 6em;
-  border-radius: 50%;
-  background-color: rgba($color-tuatara-dark, 0.2);
-  color: $color-plain-white;
-  font-size: 1em;
-  cursor: pointer;
-  display: inline-block;
-  margin-right: 1em;
-  font-weight: bold;
-  position: relative;
-
-  i {
+  & > div.image p:first-of-type {
     font-size: 2em;
-    display: block;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-  span {
-    position: relative;
-    display: block;
-    text-align: center;
-    z-index: 1;
   }
 
-  div.circle {
+  & > div.image .text__wrapper {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    z-index: 3;
+  }
+
+  & > div.text p:last-of-type {
+    padding: 2% 10%;
+  }
+
+  & > div:first-of-type {
+    display: block;
+  }
+
+  & > div {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  & > div > img {
+    width: 100%;
+    height: auto;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transition: 0.3s all ease-in-out;
-    text-align: center;
-    background: $color-persian-green;
-    color: $color-plain-white;
-    border-radius: 100%;
-    overflow: hidden;
-    z-index: 0;
-
-    font-family: sans-serif;  /* Just 'cos */
   }
 
-  &:hover,
-  &.disabled{
-
-    div.circle {
-
-      width: 0;
-      height: 0;
-      top: calc(50% );
-      left: calc(50% );
-    }
+  & > div > p {
+    padding: 2% 5%;
+    position: relative;
+    z-index: 2;
+    font-size: 1.5em;
   }
+
 }
-
 
