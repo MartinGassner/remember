@@ -51,9 +51,23 @@ $(function () {
     })
   }
   if (window.location.pathname === '/sender') {
+    // function readURL(input) {
+    //     if (input[0].files[0]) {
+    //         var reader = new FileReader();
+
+    //         reader.onload = function (e) {
+    //             $('#preview').attr('src', e.target.result);
+    //         }
+
+    //         reader.readAsDataURL(input.files[0]);
+    //     }
+    // }
+
+
     $('#fileupload').change(function() {
+      // readURL($('#fileupload'));
         var filename = $('#fileupload').val();
-        $('.fileContainer').html(filename);
+        $('.fileContainer').contents().first()[0].textContent=filename;
     });
 
     $('#rememberBtn').click(function () {
@@ -75,7 +89,7 @@ $(function () {
 
       $('#text').val('');
       $('#title').val('');
-      $('#fileupload').val('');
+      $('.fileContainer').contents().first()[0].textContent='Neue Erinnerung';
 
     });
 
