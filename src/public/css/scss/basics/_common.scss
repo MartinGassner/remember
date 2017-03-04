@@ -2,3 +2,12 @@ body {
   background-color: $color-plain-white;
   margin: 0;
 }
+
+.form {
+  i {
+    font-size: 3em;
+  }
+  span {
+    display: block;
+  }
+}
