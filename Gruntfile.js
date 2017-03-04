@@ -68,6 +68,12 @@ module.exports = function(grunt) {
             src: ['*.png', '*.jpg', '*.jpeg'],
             dest: './dist/public/img'
           },
+          {
+            expand: true,
+            cwd: 'src/public/font',
+            src: '*',
+            dest: './dist/public/font'
+          },
         ]
 
       }

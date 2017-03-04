@@ -40,7 +40,7 @@ $(function () {
     $('.filter__item').click(function (el) {
       const filterName = el.target.dataset.filter;
       toggleFilter(filterName);
-      $(el.target).toggleClass('disabled');
+      $(el.target).parent().toggleClass('disabled');
     });
   }
   if (window.location.pathname === '/sender') {

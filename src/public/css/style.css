@@ -1,6 +1,57 @@
+/*
+Flaticon icon font: Flaticon
+Creation date: 04/03/2017 09:52
+*/
+@font-face {
+  font-family: "Flaticon";
+  src: url("../font/Flaticon.eot");
+  src: url("../font/Flaticon.eot?#iefix") format("embedded-opentype"), url("../font/Flaticon.woff") format("woff"), url("../font/Flaticon.ttf") format("truetype"), url("../font/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../font/Flaticon.svg#Flaticon") format("svg"); } }
+.fi:before {
+  display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased; }
+
+.flaticon-001-pregnancy:before {
+  content: "\f100"; }
+
+.flaticon-002-men-shaking-hands:before {
+  content: "\f101"; }
+
+.flaticon-003-family-1:before {
+  content: "\f102"; }
+
+.flaticon-004-family:before {
+  content: "\f103"; }
+
+.flaticon-005-old-couple:before {
+  content: "\f104"; }
+
+.flaticon-006-crawling-baby-silhouette:before {
+  content: "\f105"; }
+
 body {
   background-color: #fff;
   margin: 0; }
+
+.form i {
+  font-size: 3em; }
+.form span {
+  display: block; }
 
 #slideshow {
   background-color: #BEEB9F;
@@ -54,15 +105,20 @@ body {
     font-size: 1.5em; }
 
 .filter__item {
+  color: #00A388;
+  font-size: 1.5em;
   cursor: pointer;
   display: inline-block;
   margin-right: 1em;
   font-weight: bold; }
-
-.filter__item:hover,
-.filter__item.disabled {
-  font-weight: normal;
-  text-decoration: line-through; }
+  .filter__item i {
+    font-size: 2em;
+    display: block;
+    text-align: center; }
+  .filter__item:hover, .filter__item.disabled {
+    color: #FF6138;
+    text-decoration: line-through;
+    opacity: 0.3; }
 
 #toggleScreenReader {
   border-radius: 50%;
