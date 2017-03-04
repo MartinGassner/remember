@@ -13,18 +13,17 @@ const express = require('express'),
     password: '',
     database: 'remember'
   });
+let consumer = null;
+
 
 
 io.on('connection', function(socket) {
   console.log('new connection');
+  if (socket.handshake.headers.referer.split('/')[3] === 'consumer') {
+    consumer = socket;
+  }
   socket.on('message', function(msg) {
-    console.log(msg)
-    console.log(socket.id)
-    //emit to all other sockets
-    socket.broadcast.emit('message', {
-      socket: socket.id,
-      message: msg
-    });
+    consumer.emit('message', msg);
   });
 
 });
@@ -82,8 +81,6 @@ app.get('/sender', function(req, res) {
   // so wird die Datei index.html ausgegeben
   res.sendFile(__dirname + '/dist/views/sender.html');
 });
-
-
 
 
 

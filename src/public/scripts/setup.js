@@ -22,10 +22,6 @@ $(function() {
         $('.memories__list').fadeToggle();
       });
     });
-    socket.on('message', function(msg) {
-      console.log(`Neuer Eintrag: ${msg}`)
-      alert(`Neuer Eintrag: ${msg.title}`)
-    });
   }
   if (window.location.pathname === '/sender') {
 
@@ -46,7 +42,15 @@ $(function() {
     });
 
   }
-
+  socket.on('message', function(msg) {
+    $('#notification').html(`<p>${msg.title}</p>`)
+    $('#notification').addClass('show');
+    $('#notification').removeClass('hide');
+    setTimeout(function() {
+      $('#notification').addClass('hide');
+      $('#notification').removeClass('show');
+    }, 3000)
+  });
 
 
 });
