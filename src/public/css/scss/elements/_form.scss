@@ -1,0 +1,62 @@
+.form {
+  margin: 0 auto;
+  width: 50%;
+}
+
+input#title, 
+textarea {
+  border: 3px solid $color-yellow-green;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+textarea {
+  width: 100%;
+  height: 160px;
+  display: block;
+}
+
+input#title {
+  width: 65%;
+  margin-left: 2%;
+  margin-right: 0;
+}
+
+#rememberBtn {
+  width: 100%;
+}
+
+#rememberBtn,
+.fileContainer {
+  cursor: pointer;
+  padding: 8px 5px;
+  margin: 5px 0;
+  border: none;
+  text-align: left;
+  font-weight: bold;
+  color: $color-tuatara-dark;
+  background-color: $color-persian-green;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $color-summer-green;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.fileContainer {
+  width: 33%; 
+  float: left;
+  overflow: hidden;
+  position: relative;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.fileContainer [type=file] {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

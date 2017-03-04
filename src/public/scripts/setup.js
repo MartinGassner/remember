@@ -51,6 +51,10 @@ $(function () {
     })
   }
   if (window.location.pathname === '/sender') {
+    $('#fileupload').change(function() {
+        var filename = $('#fileupload').val();
+        $('.fileContainer').html(filename);
+    });
 
     $('#rememberBtn').click(function () {
       const file = $('#fileupload')[0].files[0],
@@ -95,7 +99,6 @@ $(function () {
 
   // slidehsow options
   function durationTime(char) {
-    console.log('Zeichen: ' + char);
       return Math.floor(char / 10) * 1000 + 2500;
   }
 

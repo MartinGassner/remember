@@ -153,6 +153,60 @@ body {
 .navbar {
   position: inherit; }
 
+.form {
+  margin: 0 auto;
+  width: 50%; }
+
+input#title,
+textarea {
+  border: 3px solid #BEEB9F;
+  padding: 5px;
+  margin: 5px 0; }
+
+textarea {
+  width: 100%;
+  height: 160px;
+  display: block; }
+
+input#title {
+  width: 65%;
+  margin-left: 2%;
+  margin-right: 0; }
+
+#rememberBtn {
+  width: 100%; }
+
+#rememberBtn,
+.fileContainer {
+  cursor: pointer;
+  padding: 8px 5px;
+  margin: 5px 0;
+  border: none;
+  text-align: left;
+  font-weight: bold;
+  color: #32322F;
+  background-color: #00A388;
+  transition: all 0.2s ease-in-out; }
+  #rememberBtn:hover,
+  .fileContainer:hover {
+    background-color: #79BD8F;
+    transition: all 0.2s ease-in-out; }
+
+.fileContainer {
+  width: 33%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  margin-right: 0;
+  margin-left: 0; }
+
+.fileContainer [type=file] {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
 .filter {
   text-align: center; }
 
