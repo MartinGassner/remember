@@ -1,0 +1,23 @@
+#notification {
+  width: 300px;
+  position: absolute;
+  height: 75px;
+  right: 15px;
+  top: 15px;
+  text-align: center;
+  background: #e6e6e6;
+  border-radius: 10px;
+  transition: all 0.4s;
+}
+
+#notification.show {
+  transform: translateX(0);
+}
+
+#notification.hide {
+  transform: translateX(350px);
+}
+
+.navbar {
+  position: inherit;
+}

@@ -1,8 +1,8 @@
 const express = require('express'),
   bodyparser = require('body-parser'),
   app = express()
-  .use(express.static('dist/public'))
-  .use(bodyparser.json()),
+    .use(express.static('dist/public'))
+    .use(bodyparser.json({limit: '50000000'})),
   server = require('http').createServer(app),
   io = require('socket.io')(server),
   conf = require('./config.json'),
@@ -17,7 +17,7 @@ let consumer = null;
 
 
 
-io.on('connection', function(socket) {
+io.on('connection', function (socket) {
   console.log('new connection');
   if (socket.handshake.headers.referer.split('/')[3] === 'consumer') {
     consumer = socket;
@@ -31,26 +31,23 @@ io.on('connection', function(socket) {
 server.listen(conf.port);
 
 
-connection.connect(function(err) {
+connection.connect(function (err) {
   if (err) {
-    console.log('Error connecting to Db');
+    console.log('Error connecting to DB');
     return;
   }
-  console.log('Connection established');
+  console.log('DB Connection established');
 });
 
 
-
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   // so wird die Datei index.html ausgegeben
   res.sendFile(__dirname + '/dist/views/index.html');
 });
 
 
-
-app.get('/memories', function(req, res) {
-
-  connection.query('SELECT * FROM memories', function(error, results, fields) {
+app.get('/memories', function (req, res) {
+  connection.query('SELECT * FROM memories', function (error, results, fields) {
     if (error) throw error;
     res.send(results);
   });
@@ -58,17 +55,26 @@ app.get('/memories', function(req, res) {
 });
 
 
-
-app.get('/consumer', function(req, res) {
+app.get('/consumer', function (req, res) {
   // so wird die Datei index.html ausgegeben
   res.sendFile(__dirname + '/dist/views/consumer.html');
 });
 
 
+app.post('/sender', function (req, res) {
+  let image = null;
+  if (req.body.img) {
+    image = req.body.img;
+  }
 
-app.post('/sender', function(req, res) {
-  const post = { title: String(req.body.title), text: String(req.body.text), consumer_id: 1, sender_id: 2 };
-  connection.query('INSERT INTO memories SET ? ;', post, function(error) {
+  const post = {
+    title: String(req.body.title),
+    text: String(req.body.text),
+    consumer_id: 1,
+    sender_id: 2,
+    img: String(image)
+  };
+  connection.query('INSERT INTO memories SET ? ;', post, function (error) {
     if (error) throw error;
   });
   res.sendStatus(200);
@@ -76,8 +82,7 @@ app.post('/sender', function(req, res) {
 });
 
 
-
-app.get('/sender', function(req, res) {
+app.get('/sender', function (req, res) {
   // so wird die Datei index.html ausgegeben
   res.sendFile(__dirname + '/dist/views/sender.html');
 });
