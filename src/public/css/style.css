@@ -67,10 +67,11 @@ body {
   margin: 0 auto;
   position: relative;
   width: 95vw;
-  height: 90vh;
+  height: 93vh;
   padding: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  overflow: hidden; }
+  overflow: hidden;
+  margin-bottom: 2.5%; }
   #slideshow > div.text {
     background-color: #fff;
     padding: 5%; }
@@ -151,6 +152,9 @@ body {
 
 .navbar {
   position: inherit; }
+
+.filter {
+  text-align: center; }
 
 .filter__item {
   width: 6em;
