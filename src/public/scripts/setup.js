@@ -62,6 +62,9 @@ $(function () {
         text: text
       });
 
+      $('#text').val('');
+      $('#title').val('');
+      $('#fileupload').val('');
 
     });
 
@@ -84,13 +87,18 @@ $(function () {
   }
 
   // slidehsow options
-  let duration = 5000;
-  setInterval(function () {
+  function durationTime(char) {
+    console.log('Zeichen: ' + char);
+      return Math.floor(char / 10) * 1000 + 2500;
+  }
+
+  let duration;
+  function fadeImg() {
     if ($('#slideshow > div.visible').length > 1) {
-      const _this = $(this),
-        char = $('#slideshow > div:first > .text__wrapper p:first-child').text().length + $('#slideshow > div:first > .text__wrapper p:nth-child(2)').text().length;
-      duration = Math.floor(char / 30) * 1000 + 2500;
-      $('#slideshow > div:first')
+      const currentMem = $('#slideshow > div:first');
+      duration = durationTime(currentMem.next().find('.text__wrapper').text().length);
+      console.log('Dauer: ' + duration);
+      currentMem
         .fadeOut(1000)
         .next()
         .fadeIn(1000, function () {
@@ -102,10 +110,9 @@ $(function () {
     } else {
       $('#slideshow > div.visible').first().show();
     }
-    ;
-  }, duration);
-
-
+    setTimeout(function() { fadeImg(); }, duration);
+  }
+  setTimeout(function() { fadeImg(); }, durationTime($('#slideshow > div:first .text__wrapper').text().length));
 });
 
 
