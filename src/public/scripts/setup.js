@@ -51,21 +51,18 @@ $(function () {
     })
   }
   if (window.location.pathname === '/sender') {
-    // function readURL(input) {
-    //     if (input[0].files[0]) {
-    //         var reader = new FileReader();
-
-    //         reader.onload = function (e) {
-    //             $('#preview').attr('src', e.target.result);
-    //         }
-
-    //         reader.readAsDataURL(input.files[0]);
-    //     }
-    // }
-
+    function readURL(input) {
+      if (input[0].files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#preview').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input[0].files[0]);
+      }
+    }
 
     $('#fileupload').change(function() {
-      // readURL($('#fileupload'));
+      readURL($('#fileupload'));
         var filename = $('#fileupload').val();
         $('.fileContainer').contents().first()[0].textContent=filename;
     });
@@ -89,6 +86,7 @@ $(function () {
 
       $('#text').val('');
       $('#title').val('');
+      $('#preview').attr('src', '../img/brain_circle_img.png');
       $('.fileContainer').contents().first()[0].textContent='Neue Erinnerung';
 
     });
