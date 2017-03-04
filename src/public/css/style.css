@@ -212,6 +212,11 @@ input#title {
   right: 0;
   top: 0; }
 
+#filter_container {
+  padding-bottom: 15px;
+  display: table;
+  margin: 0 auto; }
+
 .filter {
   text-align: center; }
 
