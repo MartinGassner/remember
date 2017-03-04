@@ -27,10 +27,13 @@ Creation date: 04/03/2017 13:57
   font-smoothing: antialiased; }
 
 .flaticon-009-people:before {
-  content: "\f100"; }
+  content: "\f100";
+  padding: 0 5px;
+  font-size: 1.2em; }
 
 .flaticon-008-photo-camera:before {
-  content: "\f101"; }
+  content: "\f101";
+  padding: 0 5px; }
 
 .flaticon-007-map-marker-with-two-arrows-pointing-opposite-directions:before {
   content: "\f102"; }
@@ -173,9 +176,6 @@ input#title {
   margin-left: 2%;
   margin-right: 0; }
 
-#rememberBtn {
-  width: 100%; }
-
 #rememberBtn,
 .fileContainer {
   cursor: pointer;
@@ -192,13 +192,18 @@ input#title {
     background-color: #79BD8F;
     transition: all 0.2s ease-in-out; }
 
+#rememberBtn {
+  width: 100%;
+  text-align: center; }
+
 .fileContainer {
   width: 33%;
   float: left;
   overflow: hidden;
   position: relative;
   margin-right: 0;
-  margin-left: 0; }
+  margin-left: 0;
+  text-align: center; }
 
 .fileContainer [type=file] {
   cursor: pointer;

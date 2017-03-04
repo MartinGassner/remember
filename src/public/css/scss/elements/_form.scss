@@ -22,10 +22,6 @@ input#title {
   margin-right: 0;
 }
 
-#rememberBtn {
-  width: 100%;
-}
-
 #rememberBtn,
 .fileContainer {
   cursor: pointer;
@@ -44,6 +40,11 @@ input#title {
   }
 }
 
+#rememberBtn {
+  width: 100%;
+  text-align: center;
+}
+
 .fileContainer {
   width: 33%; 
   float: left;
@@ -51,6 +52,7 @@ input#title {
   position: relative;
   margin-right: 0;
   margin-left: 0;
+  text-align: center;
 }
 
 .fileContainer [type=file] {
