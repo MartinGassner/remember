@@ -22,7 +22,7 @@ $(function () {
       });
 
       $('#toggleScreenReader').click(function () {
-        $('#toggleScreenReader').toggleClass('active');
+        $('#toggleScreenReader').toggleClass('active').children().first().toggleClass('glyphicon-volume-off').toggleClass('glyphicon-volume-up');
         screenReaderOn = (screenReaderOn) ? false : true;
       });
       // $('#getRandomMemory').click(function () {
@@ -55,7 +55,6 @@ $(function () {
         text = $('#text').val(),
         title = $('#title').val(),
         category = $('input[name=category]:checked').val();
-      console.log(category);
 
       if (file && /\.(jpe?g|png|gif)$/i.test(file.name)) {
         getBase64(title, text, file, category, 1, 2);

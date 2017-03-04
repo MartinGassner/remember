@@ -64,7 +64,6 @@ app.get('/consumer', function (req, res) {
 
 app.post('/sender', function (req, res) {
   let image = null;
-  console.log(req.body);
   if (req.body.img) {
     image = req.body.img;
   }

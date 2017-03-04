@@ -62,12 +62,32 @@ module.exports = function(grunt) {
             src: 'config.json',
             dest: './dist/'
           },
+          {
+            expand: true,
+            cwd: 'src/public/img',
+            src: ['*.png', '*.jpg', '*.jpeg'],
+            dest: './dist/public/img'
+          },
         ]
 
       }
     },
+    sass: {
+      dist: {
+        files: {
+          './src/public/css/style.css': './src/public/css/scss/main.scss'
+        }
+      }
+    },
 
     watch: {
+      scss: {
+        files: ['./src/**/*.scss'],
+        tasks: ['sass'],
+        options: {
+          livereload: true
+        }
+      },
       static: {
         files: ['./src/**/*.css', './src/views/*.html'],
         tasks: ['copy'],
@@ -85,7 +105,7 @@ module.exports = function(grunt) {
     }
   })
 
-  grunt.registerTask('default', ['clean', 'copy', 'browserify:dist'])
+  grunt.registerTask('default', ['sass', 'clean', 'copy', 'browserify:dist'])
   grunt.registerTask('start', ['default', 'watch'])
 
 }
