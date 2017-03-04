@@ -3,7 +3,7 @@ body {
 }
 
 #slideshow {
-  margin: 50px auto;
+  margin: 0 auto;
   position: relative;
   width: 95vw;
   height: 90vh;
@@ -86,4 +86,25 @@ body {
 
 input {
   display: block;
+}
+
+#toggleScreenReader {
+  border-radius: 30px;
+  box-shadow: none;
+  border: none;
+  background-color: #cdcdcd;
+  color: #adadad;
+  width: 5.5em;
+  height: 5.5em;
+  margin-left: 2em;
+  bottom: -3.5em;
+  position: relative;
+  z-index: 1;
+  transition: all 0.25s ease-in-out;
+}
+
+#toggleScreenReader.active {
+  color: #77ac8b;;
+  background-color: #88cd9d;
+  transition: all 0.25s ease-in-out;
 }
