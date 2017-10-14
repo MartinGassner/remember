@@ -17,7 +17,6 @@ You will need the following things properly installed on your computer.
 ## Running
 
 
-
 ## Create SQL table
 
 ```SQL
